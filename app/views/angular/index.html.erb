@@ -1,0 +1,46 @@
+<h1>Angular#index</h1>
+
+<div ng-controller="MyCtrl">
+  <!-- <p>{{data.message}}</p> -->
+  <h2>JQuery slider in Angular</h2>
+  <label>Date range: {{daterange}}</label>
+  <div dateslider=""></div>
+</div>
+
+<script>
+$(function() {
+    var valMap = [0, 25, 50, 100, 250, 500];
+    $("#slider-range").slider({
+    	min: 0,
+    	max: valMap.length - 1,
+    	values: [0, 1],
+    	slide: function(event, ui) {
+    		$("#amount").val('Miles: ' + valMap[ui.values[0]] + ' - ' + valMap[ui.values[1]]);
+    	}
+    });
+    $("#amount").val('Miles: ' + valMap[$("#slider-range").slider("values", 0)] + ' - ' + valMap[$("#slider-range").slider("values", 1)]);
+});
+</script>
+
+<!-- <script> -->
+<!--   $(function() { -->
+<!--   $( "#slider-range" ).slider({ -->
+<!--   range: true, -->
+<!--   min: 0, -->
+<!--   max: 500, -->
+<!--   values: [ 75, 300 ], -->
+<!--   slide: function( event, ui ) { -->
+<!--   $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] ); -->
+<!--   } -->
+<!--   }); -->
+<!--   $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + -->
+<!--   " - $" + $( "#slider-range" ).slider( "values", 1 ) ); -->
+<!--   }); -->
+<!-- </script> -->
+
+<p>
+  <label>Price range:</label>
+  <input type="text" id="amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+</p>
+
+<div id="slider-range"></div>
